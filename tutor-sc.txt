@@ -713,8 +713,8 @@ Note: This avoids typing  i , the last character, the text to insert, <ESC>,
   为 Vim 改编：Bram Moolenaar。
   为 Emacs+Evil 改编（基于 vimtutor 1.5）：Sylvain Benner。
   
-  为简体中文翻译与改编：phtyhu <ph-tyhu@outlook.com>。
-  当前项目地址：https://github.com/phtyhu/evil-tutor-sc
+  为简体中文翻译与改编：clsty <ph-tyhu@outlook.com>。
+  当前项目地址：https://github.com/clsty/evil-tutor-sc
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

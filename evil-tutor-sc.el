@@ -1,13 +1,13 @@
 ;;; evil-tutor-sc.el --- Simplified Chinese Vimtutor adapted to Evil and wrapped in a major-mode
 
-;; Copyright (C) 2023 phtyhu
+;; Copyright (C) 2023 clsty
 ;;
-;; Author: phtyhu <ph-tyhu@outlook.com>
+;; Author: clsty <ph-tyhu@outlook.com>
 ;; Keywords: convenience editing evil Simplified Chinese
 ;; Created: 14 June 2023
 ;; Version: 0.1
 ;; Package-Requires: ((evil "1.0.9") (evil-tutor "0.1"))
-;; URL: https://github.com/phtyhu/evil-tutor-sc
+;; URL: https://github.com/clsty/evil-tutor-sc
 
 ;; This file is not part of GNU Emacs.
 
