@@ -706,13 +706,13 @@ Note: This avoids typing  i , the last character, the text to insert, <ESC>,
   一个简单的总览，刚好足够让你很轻松地使用这个编辑器。
   它远远不算完整，因为 Evil 还有很多其他命令。
   
-  基于 vimtutor 1.5。
   此教程原本由 Michael C. Pierce 和 Robert K. Ware（Colorado
   矿物学院）写成，想法源于 Charles Smith（Colorado 州立大学），
   电子邮箱：bware@mines.colorado.edu。
 
   为 Vim 改编：Bram Moolenaar。
-  为 Emacs+Evil 改编：Sylvain Benner。
+  为 Emacs+Evil 改编（基于 vimtutor 1.5）：Sylvain Benner。
+  
   为简体中文翻译与改编：phtyhu <ph-tyhu@outlook.com>。
   当前项目地址：https://github.com/phtyhu/evil-tutor-sc
 
