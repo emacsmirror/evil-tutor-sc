@@ -47,7 +47,7 @@ evil-tutor 是为 Evil 进行调整的、封装在一个主模式中的 Vimtutor
 (quelpa
  '(evil-tutor-sc
 	 :fetcher git
-	 :files ("tutor-sc.txt")
+	 :files (:defaults "tutor-sc.txt")
 	 :url "https://github.com/phtyhu/evil-tutor-sc.git"))
 #+end_src
 **** 通过手动克隆
