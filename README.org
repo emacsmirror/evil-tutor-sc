@@ -1,47 +1,40 @@
-* evil-tutor-sc：简体中文版的 evil-tutor (WIP)
+* evil-tutor-sc：简体中文版的 evil-tutor
 正在施工中(Working In Progress, WIP)，未完成。
+（目前进度：前三讲/共六讲）
 
 ** 描述
 evil-tutor 是为 Evil 进行调整的、封装在一个主模式中的 Vimtutor。
 
 本项目是其简体中文的翻译版。
 
-特性：
+*** 特性
 - 恢复上次的工作文件。
 - 通过 =C-j= 与 =C-k= 在课程之间快速导航。
 
 ** 安装
 *** 依赖
-必须已经安装 Evil 和 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 才能正常使用本项目。
+必须已经安装 [[https://www.emacswiki.org/emacs/Evil][Evil]] 和 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 才能正常使用本项目。
 
-以 use-package 为例：
+这两个包都在 Melpa 中，安装方法本来不必详述，但这里还是给出一段示例：
 #+begin_src elisp
-(use-package evil)
-(use-package evil-tutor)
+  (require 'package) ; 加载 package.el
+  (setq package-check-signature nil) ; 是否检查签名
+  ;; 配置镜像源
+  (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+                           ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")))
+  ;; 自动安装 use-package；在 Emacs 29 中已内置故可省略
+  (unless (package-installed-p 'use-package) (package-install 'use-package))
+  ;; 自动安装所有使用 use-package 声明的插件
+  (require 'use-package-ensure)
+  (setq use-package-always-ensure t)
+  ;; 安装 evil 和 evil-tutor
+  (use-package evil)
+  (use-package evil-tutor)
 #+end_src
-
-#+begin_quote
-注：use-package 是对包的配置，而不是安装；但可以设置为所有 use-package 自动安装，例如
-#+begin_src elisp
-(require 'package) ; 加载 package.el
-(setq package-check-signature nil) ; 是否检查签名
-; 配置镜像源
-(setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
-                         ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
-                         ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
-                         ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
-                         ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
-;; 自动安装 use-package. 在 Emacs 29 中已内置故可省略
-(unless (package-installed-p 'use-package) (package-install 'use-package))
-;; 自动安装所有使用 use-package 声明的插件
-(require 'use-package-ensure)
-(setq use-package-always-ensure t)
-#+end_src
-#+end_quote
 
 *** 本体
-**** quelpa
-示例：
+**** 通过使用 quelpa
+示例如下：
 #+begin_src elisp
 (use-package quelpa
   :ensure t
@@ -53,7 +46,7 @@ evil-tutor 是为 Evil 进行调整的、封装在一个主模式中的 Vimtutor
   (quelpa-checkout-melpa-p nil))
 (quelpa '(evil-tutor-sc :fetcher git :url "https://github.com/phtyhu/evil-tutor-sc"))
 #+end_src
-**** 手动
+**** 通过手动克隆
 首先将此项目仓库克隆到本地，以 Linux 为例：
 #+begin_src bash
 git clone --filter=blob:none https://github.com/phtyhu/evil-tutor-sc ~/.emacs.d/evil-tutor-sc
@@ -65,11 +58,11 @@ git clone --filter=blob:none https://github.com/phtyhu/evil-tutor-sc ~/.emacs.d/
 #+end_src
 
 ** 快速开始
+在 Emacs 中：
 #+begin_example
 M-x evil-tutor-sc-start
 #+end_example
-
-这会在 =evil-tutor-sc-working-directory= 创建一个工作文件
+注：这会在 =evil-tutor-sc-working-directory= 创建一个工作文件
 （默认为 =~/.emacs.d/.tutor-sc= ）。
 ** 致谢
 
