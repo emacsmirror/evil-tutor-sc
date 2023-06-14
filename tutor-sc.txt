@@ -1,0 +1,723 @@
+===============================================================================
+=         欢    迎    来    到       E m a c s   E v i l      教    程        =
+=                                                                             =
+=                                    * * *                                    =
+=                                                                             =
+=                                   版本 1.0                                  =
+===============================================================================
+
+     TL;DR: 按 C-j (CTRL+j) 以直接跳至第一讲。
+     本教程大约花费 30 分钟。
+
+     若任何时候你感到卡住，可以切换至 emacs 状态，为此使用：
+     
+           M-x evil-emacs-state RET
+
+     然后回到普通状态以继续教程，为此使用：
+
+           M-x evil-normal-state RET
+
+                                     * * *
+
+     Evil 是一个强大的 Vim 模拟，具有很多功能，
+     多到很难在这样的一个教程中解释。
+     此教程设计上仅描述足够范围的命令，
+     使你可轻松使用 Evil 加强的 Emacs 作为一个全用途的编辑器。
+
+     完成教程的大致时间是  25-30 分钟，
+     取决于多少时间花在试验中。
+
+     教程中的命令会修改此文本。复制一份此文件，
+     使用其副本来练习（若你使用 "evil-tutor-mode"，
+     则这已经是一份副本了）。
+
+     请牢记，此教程被设置为以实践进行教学。
+     这意味着你需要真的执行命令以正确地学习它们。
+     若你只读不用，你会忘记那些命令！
+
+     现在，确保你的大写锁定没有打开，然后
+     按 j 键足够多次来光标移动，直到
+     第 1 讲第 1 节的内容完全充满屏幕。
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        第 1 讲第 1 节：移动光标
+
+
+   ** 依据说明，按 h,j,k,l 键以移动光标。 **
+             ^
+             k              提示： h 键在左，移向亦左。
+       < h       l >               l 键在右，移向亦右。
+             j                     j 键看起来像向下的箭头。
+             v                     
+[[译注：不妨想像着键盘上的 hjkl 被扭曲成这样：
+                        k
+                   h       l
+                      j               。]]
+
+  1. 在屏幕上到处移动光标，直到你感到适应。
+
+  2. 按住向下键 (j) 直到重复。[[译注：向下键指 j 键，不是方向键中的下键。]]
+
+---> 现在你知道怎么移动到下一节了
+
+  3. 使用向下键，移动至第 1 讲第 2 节。
+
+注：若你不确定你键入了什么，按 <ESC> 将你带到普通状态。
+    然后重新键入你想要的命令。
+
+    [[译注：推荐用 C-[ 代替 <ESC> ，它在 evil 与
+    vim 中均等效于 <ESC> 。之后不会再提示这一点。]]
+
+    [[译注：在 Emacs 中，C- 表示 Ctrl，
+    M- 表示 Meta（或称为 Alt），s- 表示 super（或称为徽标键），
+    S- 表示 Shift（但一般用大写字母表示，因为输入大写字母
+    时需要按住 Shift，例如 C-J 表示 Ctrl+Shift+j ）。]]
+
+注：方向键（上下左右键）也应当可用。
+    但只要你习惯了用 hjkl 移动，它会快得多。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                     第 1 讲第 2 节：EMACS 的进入和退出
+
+
+  ！！注：在执行下面任何一步之前，先完整阅读本节内容！！
+
+  1. 按 <ESC> 键（以确保你处于普通状态）。
+
+  2. 输入：                        :qa! <ENTER>
+
+---> 这样会退出编辑器，不保存你所做的任何改动。
+     若你想保存改动再退出，键入：
+                                  :wqa  <ENTER>
+
+  3. 当你看到 shell 提示，回到 Emacs 并恢复你的教程会话，
+     为此键入：
+                                  M-x evil-tutor-start
+
+  4. 若你自信已经记住了这些步骤，执行第 1 到 3 步，以退出并重进编辑器。
+     之后向下移动光标至第 1 讲第 3 节。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                     第 1 讲第 3 节：文本编辑 - 删除
+
+
+** 处于普通状态下，按 x 来删除光标下的字符。 **
+
+  1. 将光标移动到下面以“--->”开头的行。
+
+  2. 为了修复错误，将光标移动到要删除的字符上。
+
+  3. 按 x 键来删除不需要的字符。
+
+  4. 重复 2 到 4 步，直到句子变得正确。
+
+---> The ccow jumpedd ovverr thhe mooon.
+
+  5. 如果这一行已经变得正确了，移动到第 1 讲第 4 节。
+
+注：在你进行此教程时，不要试图记忆，而是通过使用来学习。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                     第 1 讲第 4 节：文本编辑 - 插入
+
+
+           ** 在普通状态下，按 i 键来插入文本。 **
+
+  1. 将光标移动到下面第一个以“--->”开头的行。
+
+  2. 为了使第一行与第二行相同，将光标移动到
+     想要插入文本的那个位置之后的第一个字符上。
+
+  3. 按 i 键，再输入必要文字。
+  [[译注：i 代表 insert，这样会进入插入状态]]
+
+  4. 当所有错误都被修复，按 <ESC> 键以回到普通状态。
+     重复第 2 至 4 步以更正此句子。
+
+---> There is text misng this .
+---> There is some text missing from this line.
+
+  5. 当你已经对插入文本感到适应时，移动至下面的小结。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               第 1 讲 小结
+
+
+  1. 移动光标的方法是使用方向键或  hjkl 键。
+                       k (上)
+         h (左)              l (右)
+                j (下)
+
+  2. 要退出 Emacs，键入 <ESC> :qa! <ENTER> 以丢弃所有改动。
+                 或键入 <ESC> :wqa <ENTER> 以保存所有改动。
+
+  3. 在普通状态下要删除光标下的字符，按 x 键。
+
+  4. 在普通状态下，要在光标之前插入文本，
+     按 i 键，输入所需文本，再按 <ESC> 键。
+
+注：按 <ESC> 会使你要么处于普通状态，要么取消一个不想要的、未完成的命令。
+
+现在从第 2 讲继续。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        第 2 讲第 1 节：删除命令
+
+
+               ** 按 dw 以删除（delete）到一个单词（word）的末尾。 **
+
+  1. 按 <ESC> 以确保你处于普通状态。
+
+  2. 将光标移动到下面以“--->”开头的行。
+
+  3. 将光标移动到第一个需要被删除的单词的开头。
+
+  4. 按 dw 让这个单词消失。
+
+  注：字母 dw 在你打出它们时，将显示在屏幕的最后一行上。
+      若你进行了某些错误的输入，按 <ESC> 然后重来。
+
+---> There are a some words fun that don't belong paper in this sentence.
+
+  5. 重复第 3 至 4 步，直到此句子已修正，
+     然后移动到第 2 讲第 2 节。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                      第 2 讲第 2 节：更多的删除命令
+
+
+               ** 按 d$ 以删除到行尾。 **
+
+  1. 按 <ESC> 以确保你处于普通状态。
+
+  2. 将光标移动到下面以“--->”开头的行。
+
+  3. 将光标移至行内正确部分的结尾（在第一个 . 之后）。
+
+  4. 按 d$ 以删除到行尾。
+  [[译注：其实直接用 D（注意这里是大写，所以要按 Shift+d）更加方便。]]
+
+---> Somebody typed the end of this line twice. end of this line twice.
+
+
+  5. 移动到第 2 讲第 3 节来了解发生了什么。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                     第 2 讲第 3 节：在命令和对象（object）上
+
+
+  d 删除命令的格式如下：
+
+         [数字]  d  对象    或者     d  [数字]  对象
+
+  其中：
+    数字 - 执行命令的重复次数（可选，默认为 1）。
+    d - 删除命令。
+    对象 - 将要对其施加命令的那个东西（列举如下）。
+
+  一份短小的对象列表：
+    w - 从光标到单词（word）末尾，包括空格。
+    e - 从光标到单词末尾（end），不包括空格。
+    $ - 从光标到行尾。
+
+注：尝鲜一下，在普通状态下仅按对象而不按命令，
+    这会如对象列表中所说的那样移动光标。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                第 2 讲第 4 节：“命令-对象”的一个例外
+
+
+                   ** 按 dd 以删除整行。 **
+
+  考虑到整行删除的频次，Vim 的设计者（进而是 Evil 的）决定
+  一次按两个 d 来删除一行会更容易。
+
+  1. 将光标移至下列短语的第二行。
+  2. 按 dd 以删除此行。
+  3. 现在移至第 4 行。
+  4. 按 2dd （记得“数字-命令-对象”）来删除这两行。
+
+      1)  Roses are red,
+      2)  Mud is fun,
+      3)  Violets are blue,
+      4)  I have a car,
+      5)  Clocks tell time,
+      6)  Sugar is sweet
+      7)  And so are you.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                         第 2 讲第 5 节：撤销（undo）命令
+
+
+                   ** 按 u 撤销上一个命令 **
+
+  1. 将光标移动到下面以“--->”开头的行内的第一个错误上。
+  2. 按 x 删除第一个不想要的字符。
+  3. 现在按 u 来撤销上一个被执行的命令。
+  4. 这次，使用 x 修复行内的所有错误。
+  5. 现在，按 u 几次，来撤销刚才的所有命令。
+  6. 现在按几次 C-r（按住 Ctrl 再按一下 R）来
+     执行重做（redo）命令（“撤销前面的撤销”）。
+     [[译注：目前 Evil 已经取消对 undo-tree
+     的强制依赖，这意味着你需要自行配置
+     evil-undo-system 才能使用重做命令。]]
+
+---> Fiix the errors oon thhis line and reeplace them witth undo.
+
+  8. 这是很有用的命令。现在移动至第 2 讲的总结。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               第 2 讲 小结
+
+
+  1. 从光标删除至单词末尾：dw
+
+  2. 从光标删除至行尾：d$
+
+  3. 删除整行：dd
+
+  4. 在普通模式下，一个命令的格式是：
+
+         [数字]  命令  对象    或者     命令  [数字]  对象
+  其中：
+    数字 - 执行命令的重复次数。
+    命令 - 要做的事情，比如 d 代表删除。
+    对象 - 将要对其施加命令的那个东西，比如 w 代表单词，$ 代表“至行尾”，等等。
+
+  5. 要撤销之前的动作：u
+     要撤销“撤销”（即重做）：CTRL-R
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                         第 3 讲第 1 节：放置（put）命令
+
+
+          ** 按 p 以将上一次删除的放置（put）在光标之后。 **
+
+  1. 将光标移至下面一组文字的第一行。
+
+  2. 按 dd 以删除此行，并将其保存至 Emacs 的移除环（kill ring）。
+
+  3. 将光标移至被删除的环应当位于的地方的上面一行。
+
+  4. 在普通状态下，按 p 以放置此行。
+
+  5. 重复第 2 至 4 步，直到所有行都被放置为正确的顺序。
+
+     d) Can you learn too?
+     b) Violets are blue,
+     c) Intelligence is learned,
+     a) Roses are red,
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                       第 3 讲第 2 节：替换（replace）命令
+
+
+  ** 按 r 和某个字符来替换（replace）光标下的字符。 **
+
+  1. 将光标移动到下面第一个以“--->”开头的行。
+
+  2. Move the cursor so that it is on top of the first error.
+
+  3. 按 r 然后再按对应的字符以修正错误。
+
+  4. 重复第 2 至 3 步直到第一行被修正。
+
+--->  Whan this lime was tuoed in, someone presswd some wrojg keys!
+--->  When this line was typed in, someone pressed some wrong keys!
+
+  5. 现在移动至第 3 讲第 3 节。
+
+注：记住，你应当通过使用来学习，而不是仅靠记忆。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        Lesson 3.3: 更改（change）命令
+
+
+            ** 按 cw 来更改（change）某个单词（word）的部分或全部。 **
+
+  1. 将光标移动到下面第一个以“--->”开头的行。
+
+  2. 将光标置于 lubw 的 u 上。
+
+  3. 按 cw 并修正单词（在此情形下，按“ine”）。
+
+  4. 按 <ESC> 并移至下一处错误（即应当被更改的部分的第一个字符）上。
+
+  5. 重复第 3 至 4 步，直到第一句与第二句相同。
+
+---> This lubw has a few wptfd that mrrf changing usf the change command.
+---> This line has a few words that need changing using the change command.
+
+注意 cw 不仅替换了单词，也使你进入了插入状态。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                       第 3 讲第 4 节：用 c 进行更多的更改
+
+
+     ** 与删除命令一致，更改命令是要与相同的对象一起使用的。 **
+
+  1. 更改命令和删除命令类似。格式为：
+
+          [数字]  c  对象     或      c  [数字]  对象
+
+  2. 对象也是相同的，比如 w（单词，word）、$（至行尾）等。
+
+  3. 移动到下面第一个以“--->”开头的行。
+
+  4. 将光标移至第一处错误上。
+
+  5. 按 c$ 以使得行内的剩余部分与第二行相同，并按 <ESC> 。
+  [[译注：其实直接用 C（注意这里是大写，所以要按 Shift+c）更加方便。]]
+
+---> The end of this line needs some help to make it like the second.
+---> The end of this line needs to be corrected using the  c$  command.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               第 3 讲 小结
+
+
+  1. 为了重新放置已被删除的文本，按 p，这会将被删除的文本放置在光标之后。
+     （若被删的是某一行，它会出现在光标的下一行）。
+
+  2. 要替换光标下的一个字符，按 r，再按要替换原字符的新字符。
+
+  3. 更改命令允许你更改指定的对象，从光标至对象某尾。
+     例如，按 cw 从光标至单词末尾进行更改，
+     c$ 从光标至行尾进行更改。
+
+  4. 更改命令的使用格式是：
+
+         [数字]  c  对象    或者     c  [数字]  对象
+
+现在进入下一讲。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                     第 4 讲第 1 节：缓冲区（buffer）内的快速移动
+
+
+             ** 按 gg 以移动至一个缓冲区的开头。
+                按 G 以移动至一个缓冲区的结尾。 **
+[[译注：你可以简单地将一个缓冲区理解为“一个打开着的文件”。]]
+
+  ！！注：在执行下面任何一步之前，先完整阅读本节内容！！
+
+  1. 为了第 4 步，记住你现在所在的行数。
+
+  2. 按 G 以移至缓冲区的结尾。
+  
+  3. 按 gg 以移至缓冲区的开头。
+
+  4. 按 : 以及你之前所在的行数，再按 <ENTER>，
+     这将使你回到你在第 2 步之前所处的行。
+
+  5. 如果你已经有了做这个的信心，执行第 1 至第 3 步。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        第 4 讲第 2 节：搜索命令
+
+
+     ** 按 / 再加某个短语来搜索这个短语。 **
+
+  1. 在普通状态下按 / 。注意 / 和光标都会出现在屏幕底部（像 : 命令一样）。
+
+  2. 现在输入 errroor 再按 <ENTER>。这是你要搜索的单词。
+
+  3. 为了再次搜索相同单词，按 n。
+     为了反向搜索相同单词，按 N。
+
+  4. 如果你想反向搜索一个单词，使用 ? 而不是 / 。
+
+---> When the search reaches the end of the buffer it will continue at the start.
+
+  "errroor" is not the way to spell error;  errroor is an error.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                   Lesson 4.3: MATCHING PARENTHESES SEARCH
+
+
+                 ** Type  %  to find a matching ),], or } **
+
+  1. 将光标移动到下面以“--->”开头的行内的任一括号如 (、[、{ 上。
+
+  2. Now type the  %  character.
+
+  3. The cursor should be on the matching parenthesis or bracket.
+
+  4. Type  %  to move the cursor back to the first bracket (by matching).
+
+---> This ( is a test line with ('s, ['s ] and {'s } in it. ))
+
+Note: This is very useful in debugging a program with unmatched parentheses
+      (and in elisp)!
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                      Lesson 4.4: A WAY TO CHANGE ERRORS
+
+
+           ** Type  :s/old/new/g  to substitute 'new' for 'old'. **
+
+  1. 将光标移动到下面以“--->”开头的行。
+
+  2. Type  :s/thee/the <ENTER>
+     Note that this command only changes the first occurrence on the line.
+
+  3. Now type  :s/thee/the/g  meaning substitute globally on the line.
+     This changes all occurrences on the line.
+
+---> thee best time to see thee flowers is in thee spring.
+
+  4. To change every occurrence of a character string between two lines,
+
+     type  :#,#s/old/new/g  where #,# are the numbers of the two lines.
+
+     Type  :%s/old/new/g  to change every occurrence in the whole buffer.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               LESSON 4 SUMMARY
+
+
+  1. gg  moves to the beginning of the buffer.
+     G   moves to the end of the buffer.
+     :   followed by a line number then  <ENTER>  moves to that line number.
+
+  2. Typing  /  followed by a phrase searches FORWARD for the phrase.
+     Typing  ?  followed by a phrase searches BACKWARD for the phrase.
+     After a search type  n  to find the next occurrence in the same direction
+     or  N  to search in the opposite direction.
+
+  3. Typing  %  while the cursor is on a  (,),[,],{, or }  locates its
+     matching pair.
+
+  4. To substitute new for the first old on a line type  :s/old/new
+     To substitute new for all 'old's on a line type     :s/old/new/g
+     To substitute phrases between two line #'s type     :#,#s/old/new/g
+     To substitute all occurrences in the file type      :%s/old/new/g
+     To ask for confirmation each time add 'c'           :%s/old/new/gc
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                Lesson 5.1: HOW TO EXECUTE AN EXTERNAL COMMAND
+
+
+   ** Type  :!  followed by an external command to execute that command. **
+
+  1. Type the familiar command  :  to set the cursor at the bottom of the
+     screen.  This allows you to enter a command (remember we already used
+     this to go to a line number in a buffer).
+
+  2. Now type the  !  (exclamation point) character. This allows you to
+     execute any external shell command.
+
+  3. As an example type  ls  following the  !  and then hit <ENTER>.  This
+     will show you a listing of your directory, just as if you were at the
+     shell prompt. Or use   :!dir  if ls doesn't work (on Windows).
+
+---> Note:  It is possible to execute any external command this way.
+
+---> Note:  All  :  commands must be finished by hitting <ENTER>
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                      Lesson 5.2: MORE ON WRITING FILES
+
+
+        ** To save the changes made to the file, type  :w FILENAME  **
+
+  1. Type  :!ls  or  :!dir  to get a listing of your directory.
+     You already know you must hit <ENTER> after this.
+
+  2. Choose a filename that does not exist yet, such as TEST.
+
+  3. Now type:  :w TEST  (where TEST is the filename you chose.)
+
+  4. This saves the whole file  under the name TEST.
+     To verify this, type  :!ls  or  :!dir  again to see your directory
+
+---> Note that if you were to exit Emacs and enter again with the filename TEST,
+     the file would be an exact copy of the tutor when you saved it.
+
+  5. Now remove the file by typing:
+     on Unix:     :!rm TEST
+     on Windows:  :!del TEST
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    Lesson 5.3: A SELECTIVE WRITE COMMAND
+
+
+           ** To save part of the file, type  :#,# w FILENAME  **
+
+  1. Once again, type  :!ls  or  :!dir  to obtain a listing of your directory
+     and choose a suitable filename such as TEST.
+
+  2. Move the cursor to the top of this lesson by pressing  C-k  to find the
+     number of that line.  REMEMBER THIS NUMBER!
+
+  3. Now move to the bottom of the lesson by pressing  C-j  to find the
+     number of that line. REMEMBER THIS LINE NUMBER ALSO!
+
+  4. To save ONLY a section to a file, type   :#,# w TEST   where #,# are
+     the two numbers you remembered (top,bottom) and TEST is your filename.
+
+  5. Again, see that the file is there with  :!ls  or  :!dir  but DO NOT
+     remove it.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                   Lesson 5.4: RETRIEVING AND MERGING FILES
+
+
+         ** To insert the contents of a file, type  :r FILENAME  **
+
+  1. Type  :!ls  or  :!dir  to make sure your TEST filename is present from
+     before.
+
+  2. Place the cursor at the top of this lesson.
+
+NOTE: After executing Step 3 you will see Lesson 5.3. Then move DOWN to this
+      lesson again.
+
+  3. Now retrieve your TEST file using the command  :r TEST  where TEST is
+     the name of the file.
+
+NOTE:  The file you retrieve is placed starting where the cursor is located.
+
+  4. To verify that a file was retrieved, cursor back and notice that there
+     are now two copies of Lesson 5.3, the original and the file version.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               LESSON 5 SUMMARY
+
+
+  1.  :!command  executes an external command.
+
+      Some useful examples are:
+          :!ls  or  :!dir                 -  shows a directory listing.
+          :!rm  or  :!del FILENAME        -  removes file FILENAME.
+
+  2.  :w FILENAME  writes the current buffer to disk with file name FILENAME.
+
+  3.  :#,#w FILENAME  saves the lines # through # in file FILENAME.
+
+  4.  :r FILENAME  retrieves disk file FILENAME and inserts it into the
+      current buffer following the cursor position.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                         Lesson 6.1: THE OPEN COMMAND
+
+
+ ** Type  o  to open a line below the cursor and place you in insert state. **
+
+  1. 将光标移动到下面以“--->”开头的行。
+
+  2. Type  o  to open up a line BELOW the cursor and place you in insert state
+
+  3. 现在复制以“--->”开头的行，并按 <ESC> 以退出插入状态。
+
+---> After typing  o  the cursor is placed on the open line in insert state.
+
+  4. To open up a line ABOVE the cursor, simply type a capital  O  rather
+     than a lowercase  o
+     Try this on the line below.
+Open up a line above this by typing  O  while the cursor is on this line.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                        Lesson 6.2: THE APPEND COMMAND
+
+
+               ** Type  a  to insert text AFTER the cursor. **
+
+  1. 通过在普通模式下按 $ ，将光标移动到下面
+     第一个以“--->”开头的行的末尾。
+
+  2. Type an  a  to append text AFTER the character under the cursor.
+     (Uppercase  A  appends to the end of the line.)
+
+Note: This avoids typing  i , the last character, the text to insert, <ESC>,
+      cursor-right, and finally, x , just to append to the end of a line!
+
+  3. Now complete the first line.  Note also that append is exactly the same
+     as insert state, except for the location where text is inserted.
+
+---> This line will allow you to practice
+---> This line will allow you to practice appending text to the end of a line.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                    Lesson 6.3: ANOTHER VERSION OF REPLACE
+
+
+      ** Type a capital  R  to replace more than one character. **
+
+  1. 将光标移动到下面第一个以“--->”开头的行。
+
+  2. 将光标移动到下面与以“--->”开头的第二行不同的
+     第一个单词（即“last”）的开头。
+
+  3. Now type  R  and replace the remainder of the text on the first line by
+     typing over the old text to make the first line the same as the second.
+
+---> To make the first line the same as the last on this page use the keys.
+---> To make the first line the same as the second, type R and the new text.
+
+  4. Note that when you press <ESC> to exit, any unaltered text remains.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               LESSON 6 SUMMARY
+
+
+  1. Typing  o        opens a line BELOW the cursor and places the cursor on the open
+     line in insert state.
+     Typing a capital  O  opens the line ABOVE the line the cursor is on.
+
+  2. Type an  a  to insert text AFTER the character the cursor is on.
+     Typing a capital  A  automatically appends text to the end of the line.
+
+  3. Typing a capital  R  enters Replace mode until  <ESC>  is pressed to exit.
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  Evil Tutor 在这里就结束了。它旨在给出 Emacs+Evil 编辑器的
+  一个简单的总览，刚好足够让你很轻松地使用这个编辑器。
+  它远远不算完整，因为 Evil 还有很多其他命令。
+  
+  此教程原本由 Michael C. Pierce 和 Robert K. Ware（Colorado
+  矿物学院）写成，点子源于 Charles Smith（Colorado 州立大学），
+  电子邮箱：bware@mines.colorado.edu。
+
+  为 Vim 改编：Bram Moolenaar。
+  为 Emacs+Evil 改编：Sylvain Benner。
+  为简体中文翻译与改编：phtyhu <ph-tyhu@outlook.com>。
+
+  基于 vimtutor 1.5
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+;;; Local Variables:
+;;; coding: utf-8
+;;; End:

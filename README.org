@@ -1,0 +1,71 @@
+* evil-tutor-sc：简体中文版的 evil-tutor (WIP)
+正在施工中(Working In Progress, WIP)，未完成。
+
+** 描述
+evil-tutor 是为 Evil 进行调整的、封装在一个主模式中的 Vimtutor。
+
+本项目是其简体中文的翻译版。
+
+特性：
+- 恢复上次的工作文件。
+- 通过 =C-j= 与 =C-k= 在课程之间快速导航。
+
+** 安装
+*** 依赖
+必须已经安装 Evil 和 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 才能正常使用本项目。
+
+以 use-package 为例：
+#+begin_src elisp
+(use-package evil)
+(use-package evil-tutor)
+#+end_src
+
+#+begin_quote
+注：use-package 是对包的配置，而不是安装；但可以设置为所有 use-package 自动安装，例如
+#+begin_src elisp
+(require 'package) ; 加载 package.el
+(setq package-check-signature nil) ; 是否检查签名
+; 配置镜像源
+(setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
+                         ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+                         ("melpa-stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
+                         ("melpa" . "https://mirrors.ustc.edu.cn/elpa/melpa/")
+                         ("nongnu" . "https://mirrors.ustc.edu.cn/elpa/nongnu/")))
+;; 自动安装 use-package. 在 Emacs 29 中已内置故可省略
+(unless (package-installed-p 'use-package) (package-install 'use-package))
+;; 自动安装所有使用 use-package 声明的插件
+(require 'use-package-ensure)
+(setq use-package-always-ensure t)
+#+end_src
+#+end_quote
+
+*** 本体
+**** quelpa
+示例：
+#+begin_src elisp
+(use-package quelpa)
+(quelpa '(evil-tutor-sc :fetcher git :url "https://github.com/phtyhu/evil-tutor-sc"))
+#+end_src
+**** 手动
+首先将此项目仓库克隆到本地，以 Linux 为例：
+#+begin_src bash
+git clone --filter=blob:none https://github.com/phtyhu/evil-tutor-sc ~/.emacs.d/evil-tutor-sc
+#+end_src
+
+然后向配置文件（如 =~/.emacs.d/init.el= ）中指定加载此文件（还是以 Linux 为例）：
+#+begin_src elisp
+(load "~/.emacs.d/evil-tutor-sc/evil-tutor-sc.el")
+#+end_src
+
+** 快速开始
+#+begin_example
+M-x evil-tutor-sc-start
+#+end_example
+
+这会在 =evil-tutor-sc-working-directory= 创建一个工作文件
+（默认为 =~/.emacs.d/.tutor-sc= ）。
+** 致谢
+
+本项目译自 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 。
+
+=evil-tutor-sc.el= 代码源自 [[https://github.com/kenjimyzk/evil-tutor-ja][evil-tutor-ja.el]]。
