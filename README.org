@@ -3,15 +3,17 @@
 （目前进度：前三讲/共六讲）
 
 ** 描述
-evil-tutor 是为 Evil 进行调整的、封装在一个主模式中的 Vimtutor。
-
-本项目是其简体中文的翻译版。
+本项目简体中文版的 evil-tutor，
+在译自[[https://github.com/syl20bnr/evil-tutor][源项目]]的同时，也加入了一些改进与修正。
 
 *** 特性
 - 恢复上次的工作文件。
 - 通过 =C-j= 与 =C-k= 在课程之间快速导航。
 
 ** 安装
+这里给出分步说明。
+
+一份使用了 Evil 及 evil-tutor-sc 的完整配置也可参考 [[https://github.com/phtyhu/arCNiso/tree/main/airootfs/etc/skel/.emacs.d][arCNiso]] 。
 *** 依赖
 必须已经安装 [[https://www.emacswiki.org/emacs/Evil][Evil]] 和 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 才能正常使用本项目。
 
@@ -61,15 +63,17 @@ git clone --filter=blob:none https://github.com/phtyhu/evil-tutor-sc ~/.emacs.d/
 (load "~/.emacs.d/evil-tutor-sc/evil-tutor-sc.el")
 #+end_src
 
-** 快速开始
+** 使用
 在 Emacs 中：
 #+begin_example
 M-x evil-tutor-sc-start
 #+end_example
-注：这会在 =evil-tutor-sc-working-directory= 创建一个工作文件
-（默认为 =~/.emacs.d/.tutor-sc= ）。
-** 致谢
+注：这会在临时目录 =evil-tutor-sc-working-directory=
+（默认为 =~/.emacs.d/.tutor-sc= ）创建一个工作文件。
 
+若需要恢复初始状态，可清理此目录。
+
+** 致谢
 本项目译自 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 。
 
 =evil-tutor-sc.el= 代码源自 [[https://github.com/kenjimyzk/evil-tutor-ja][evil-tutor-ja.el]]。
