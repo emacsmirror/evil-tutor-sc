@@ -37,14 +37,18 @@ evil-tutor 是为 Evil 进行调整的、封装在一个主模式中的 Vimtutor
 示例如下：
 #+begin_src elisp
 (use-package quelpa
-  :ensure t
-  :commands quelpa
-  :custom
-  (quelpa-git-clone-depth 1)
-  (quelpa-self-upgrade-p nil)
-  (quelpa-update-melpa-p nil)
-  (quelpa-checkout-melpa-p nil))
-(quelpa '(evil-tutor-sc :fetcher git :url "https://github.com/phtyhu/evil-tutor-sc"))
+ :ensure t
+ :commands quelpa
+ :custom
+ (quelpa-git-clone-depth 1)
+ (quelpa-self-upgrade-p nil)
+ (quelpa-update-melpa-p nil)
+ (quelpa-checkout-melpa-p nil))
+(quelpa
+ '(evil-tutor-sc
+	 :fetcher git
+	 :files ("tutor-sc.txt")
+	 :url "https://github.com/phtyhu/evil-tutor-sc.git"))
 #+end_src
 **** 通过手动克隆
 首先将此项目仓库克隆到本地，以 Linux 为例：

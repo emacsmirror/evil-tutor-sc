@@ -84,7 +84,7 @@ be handled by minor modes."
         (switch-to-buffer (get-buffer-create "working-file-name"))
         (set-visited-file-name (concat evil-tutor-sc-working-directory
                                        working-file-name))
-           (insert-file-contents tutor-file)
+	(insert-file-contents tutor-file)
         (make-directory evil-tutor-sc-working-directory 'parents)
         (save-buffer 0)))))
 
