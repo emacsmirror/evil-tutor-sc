@@ -49,10 +49,11 @@
        < h       l >               l 键在右，移向亦右。
              j                     j 键看起来像向下的箭头。
              v                     
-[[译注：不妨想像着键盘上的 hjkl 被扭曲成这样：
+
+不妨想像着键盘上的 hjkl 被扭曲成这样：
                         k
                    h       l
-                      j               。]]
+                      j     
 
   1. 在屏幕上到处移动光标，直到你感到适应。
 
@@ -65,13 +66,14 @@
 注：若你不确定你键入了什么，按 <ESC> 将你带到普通状态。
     然后重新键入你想要的命令。
 
-    [[译注：推荐用 C-[ 代替 <ESC> ，它在 evil 与
-    vim 中均等效于 <ESC> 。之后不会再提示这一点。]]
+注：推荐用 C-[ 代替 <ESC> ，
+    它在 evil 与 vim 中均等效于 <ESC> 。
+    之后不会再提示这一点，而是直接称为 <ESC> 。
 
-    [[译注：在 Emacs 中，C- 表示 Ctrl，
+注：在 Emacs 中，C- 表示 Ctrl，
     M- 表示 Meta（或称为 Alt），s- 表示 super（或称为徽标键），
     S- 表示 Shift（但一般用大写字母表示，因为输入大写字母
-    时需要按住 Shift，例如 C-J 表示 Ctrl+Shift+j ）。]]
+    时需要按住 Shift，例如 C-J 表示 Ctrl+Shift+j ）。
 
 注：方向键（上下左右键）也应当可用。
     但只要你习惯了用 hjkl 移动，它会快得多。
@@ -201,7 +203,8 @@
   3. 将光标移至行内正确部分的结尾（在第一个 . 之后）。
 
   4. 按 d$ 以删除到行尾。
-  [[译注：其实直接用 D（注意这里是大写，所以要按 Shift+d）更加方便。]]
+
+  注：其实直接用 D（注意这里是大写，所以要按 Shift+d）更加方便。
 
 ---> Somebody typed the end of this line twice. end of this line twice.
 
@@ -267,9 +270,10 @@
   5. 现在，按 u 几次，来撤销刚才的所有命令。
   6. 现在按几次 C-r（按住 Ctrl 再按一下 R）来
      执行重做（redo）命令（“撤销前面的撤销”）。
-     [[译注：目前 Evil 已经取消对 undo-tree
-     的强制依赖，这意味着你需要自行配置
-     evil-undo-system 才能使用重做命令。]]
+
+注：目前 Evil 已经取消对 undo-tree 的强制依赖，这意味着
+    你需要在加载 evil 之前妥善设置 evil-undo-system 的
+    变量值，才能使用重做命令。
 
 ---> Fiix the errors oon thhis line and reeplace them witth undo.
 
@@ -516,188 +520,185 @@
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                Lesson 5.1: HOW TO EXECUTE AN EXTERNAL COMMAND
+                第 5 讲第 1 节：怎样执行一个外部命令
 
 
-   ** Type  :!  followed by an external command to execute that command. **
+   ** 输入 :! 后跟一个外部命令来执行此命令。 **
 
-  1. Type the familiar command  :  to set the cursor at the bottom of the
-     screen.  This allows you to enter a command (remember we already used
-     this to go to a line number in a buffer).
+  1. 输入我们已经熟悉的 : ，将光标置于屏幕底部。
+     这允许你输入一个命令（记住我们之前已经使用过
+     这个，用以移动到缓冲区中对应的行号。）
 
-  2. Now type the  !  (exclamation point) character. This allows you to
-     execute any external shell command.
+  2. 现在输入 ! （英文感叹号）字符。这允许你
+     执行任何外部 shell 命令。
 
-  3. As an example type  ls  following the  !  and then hit <ENTER>.  This
-     will show you a listing of your directory, just as if you were at the
-     shell prompt. Or use   :!dir  if ls doesn't work (on Windows).
+  3. 作为一个例子，在 ! 之后输入 ls ，再按 <ENTER>。
+     这将向你展示你的目录的一个列表，正如你在 shell
+     提示符中的那样。如果 ls 没有用，可以使用 :!dir （在 Windows 上）。
 
----> Note:  It is possible to execute any external command this way.
+---> 注：所有外部命令都可以这样执行。
 
----> Note:  All  :  commands must be finished by hitting <ENTER>
-
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                      Lesson 5.2: MORE ON WRITING FILES
-
-
-        ** To save the changes made to the file, type  :w FILENAME  **
-
-  1. Type  :!ls  or  :!dir  to get a listing of your directory.
-     You already know you must hit <ENTER> after this.
-
-  2. Choose a filename that does not exist yet, such as TEST.
-
-  3. Now type:  :w TEST  (where TEST is the filename you chose.)
-
-  4. This saves the whole file  under the name TEST.
-     To verify this, type  :!ls  or  :!dir  again to see your directory
-
----> Note that if you were to exit Emacs and enter again with the filename TEST,
-     the file would be an exact copy of the tutor when you saved it.
-
-  5. Now remove the file by typing:
-     on Unix:     :!rm TEST
-     on Windows:  :!del TEST
+---> 注：所有 : 命令都必须用 <ENTER> 完成输入。
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    Lesson 5.3: A SELECTIVE WRITE COMMAND
+                      第 5 讲第 2 节：再谈写入（write）文件
 
 
-           ** To save part of the file, type  :#,# w FILENAME  **
+        ** 为了保存对文件的更改，输入 :w 文件名 **
 
-  1. Once again, type  :!ls  or  :!dir  to obtain a listing of your directory
-     and choose a suitable filename such as TEST.
+  1. 输入 :!ls 或 :!dir 以得到你的目录的一个列表。
+     你已经知道你必须在之后按 <ENTER>。
 
-  2. Move the cursor to the top of this lesson by pressing  C-k  to find the
-     number of that line.  REMEMBER THIS NUMBER!
+  2. 选择一个尚不存在的文件名，比如 TEST。
 
-  3. Now move to the bottom of the lesson by pressing  C-j  to find the
-     number of that line. REMEMBER THIS LINE NUMBER ALSO!
+  3. 现在输入 :w TEST （其中 TEST 是你选择的文件名）。
 
-  4. To save ONLY a section to a file, type   :#,# w TEST   where #,# are
-     the two numbers you remembered (top,bottom) and TEST is your filename.
+  4. 这将以名字 TEST 保存整个文件。
+     为了验证这点，再次输入 :!ls 或 :!dir 来查看你的目录。
 
-  5. Again, see that the file is there with  :!ls  or  :!dir  but DO NOT
-     remove it.
+---> 注意，若你退出 Emacs 并重新以文件名 TEST 进入，
+     此文件将刚好是本教程在你保存它时制作的一份副本。
 
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                   Lesson 5.4: RETRIEVING AND MERGING FILES
-
-
-         ** To insert the contents of a file, type  :r FILENAME  **
-
-  1. Type  :!ls  or  :!dir  to make sure your TEST filename is present from
-     before.
-
-  2. Place the cursor at the top of this lesson.
-
-NOTE: After executing Step 3 you will see Lesson 5.3. Then move DOWN to this
-      lesson again.
-
-  3. Now retrieve your TEST file using the command  :r TEST  where TEST is
-     the name of the file.
-
-NOTE:  The file you retrieve is placed starting where the cursor is located.
-
-  4. To verify that a file was retrieved, cursor back and notice that there
-     are now two copies of Lesson 5.3, the original and the file version.
+  5. 现在删除此文件，为此输入：
+     在 Unix 上：            :!rm TEST
+     在 Windows 上：         :!del TEST
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                               LESSON 5 SUMMARY
+                    第 5 讲第 3 节：一个选择性的写入命令
 
 
-  1.  :!command  executes an external command.
+           ** 为了保存文件的一部分，输入 :#,# w 文件名 **
 
-      Some useful examples are:
-          :!ls  or  :!dir                 -  shows a directory listing.
-          :!rm  or  :!del FILENAME        -  removes file FILENAME.
+  1. 再次，输入 :!ls 或 :!dir 以获得你的目录的一个列表，
+     并选择一个适当的文件名比如 TEST。
 
-  2.  :w FILENAME  writes the current buffer to disk with file name FILENAME.
+  2. 按 C-k 以将光标移动至此节的第一行，并找到这行的行号。
+     务必记住这个行号！
 
-  3.  :#,#w FILENAME  saves the lines # through # in file FILENAME.
+  3. 按 C-j 以将光标移动至此节的最后一行，并找到这行的行号。
+     务必记住这个行号！
 
-  4.  :r FILENAME  retrieves disk file FILENAME and inserts it into the
-      current buffer following the cursor position.
+  4. 为了仅保存一节到一个文件，输入 :#,# w TEST
+     其中 #,# 是你刚才记住的两个行号（顶部、底部），
+     TEST 是你的文件名。
+
+  5. 再次，使用 :!ls 或 :!dir 以查看文件确实在那里。
+     但不要删除它。
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                         Lesson 6.1: THE OPEN COMMAND
+                   第 5 讲第 4 节：取出（retrieving）与合并（merging）文件
 
 
- ** Type  o  to open a line below the cursor and place you in insert state. **
+         ** 为了插入一个文件的内容，输入 :r 文件名 **
+
+  1. 输入 :!ls 或 :!dir 来确保你的 TEST 文件从之前至现在依然存在。
+
+  2. 将光标置于这一节的顶部。
+
+注：在执行第 3 步后，你将看到第 5 讲第 3 节。
+    在这之后向下移动至本节！
+
+  3. 现在取出（retrieve）你的 TEST 文件，为此使用命令 :r TEST 。
+
+注：你取出的文件的开头被置于光标之前位于的地方。
+
+  4. 为了检验一个文件被取出，移回光标并注意现在已经有了
+     两份第 5 讲第 3 节的副本，包括原本的和文件版的。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                               第 5 讲 小结
+
+
+  1.  :!命令 执行一个外部命令。
+
+      一些有用的例子：
+          :!ls 或 :!dir                 - 显示一个目录列表
+          :!rm 或 :!del FILENAME        - 删除以 FILENAME 为名的文件
+
+  2. :w FILENAME 将当前缓冲区以文件名 FILENAME 写入到磁盘中。
+
+  3. :#,#w FILENAME 将行数 # 到 # 之间的行保存到文件 FILENAME 中。
+
+  4. :r FILENAME 取回磁盘文件 FILENAME 并将其插入
+     当前缓冲区的光标位置之后。
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                         第 6 讲第 1 节：打开（open）命令
+
+
+ ** 按 o 以在光标下方打开一行，并使你处于插入状态。 **
 
   1. 将光标移动到下面以“--->”开头的行。
 
-  2. Type  o  to open up a line BELOW the cursor and place you in insert state
+  2. 按 o 以在光标下方打开一行，并使你处于插入状态。
 
   3. 现在复制以“--->”开头的行，并按 <ESC> 以退出插入状态。
 
----> After typing  o  the cursor is placed on the open line in insert state.
+---> 在按 o 之后可以看到，光标被置于打开的行，并进入插入状态。
 
-  4. To open up a line ABOVE the cursor, simply type a capital  O  rather
-     than a lowercase  o
-     Try this on the line below.
-Open up a line above this by typing  O  while the cursor is on this line.
+  4. 为了在光标上方打开一行，直接按大写 O 而不是小写 o。
+     在下面的行试验这个。
+---> 在此行上方打开一行，为此将光标移至此行并按 O。
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                        Lesson 6.2: THE APPEND COMMAND
+                        第 6 讲第 2 节：附加（append）命令
 
 
-               ** Type  a  to insert text AFTER the cursor. **
+               ** 按 a 以在光标之后插入命令。 **
 
   1. 通过在普通模式下按 $ ，将光标移动到下面
      第一个以“--->”开头的行的末尾。
 
-  2. Type an  a  to append text AFTER the character under the cursor.
-     (Uppercase  A  appends to the end of the line.)
+  2. 按 a 来在光标之后附加（append）文本。
+     （大写 A 附加到行末。）
 
-Note: This avoids typing  i , the last character, the text to insert, <ESC>,
-      cursor-right, and finally, x , just to append to the end of a line!
+注：如果你不使用 A 而是像之前一样使用 i 来达成
+    附加到行末的目标，不是不行，但会相当麻烦。
 
-  3. Now complete the first line.  Note also that append is exactly the same
-     as insert state, except for the location where text is inserted.
+  3. 现在补完第一行。也要注意，附加和插入一样会进入
+     插入状态，不同处仅在于插入点相对光标的位置。
 
 ---> This line will allow you to practice
 ---> This line will allow you to practice appending text to the end of a line.
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                    Lesson 6.3: ANOTHER VERSION OF REPLACE
+                    第 6 讲第 3 节：另一个版本的替换（replace）
 
 
-      ** Type a capital  R  to replace more than one character. **
+      ** 按大写的 R 来替换多于一个的字符。 **
 
   1. 将光标移动到下面第一个以“--->”开头的行。
 
   2. 将光标移动到下面与以“--->”开头的第二行不同的
      第一个单词（即“last”）的开头。
 
-  3. Now type  R  and replace the remainder of the text on the first line by
-     typing over the old text to make the first line the same as the second.
+  3. 现在按 R 来替换第一行的剩余文本，
+     通过在旧文本上输入，使得第一行与第二行相同。
 
 ---> To make the first line the same as the last on this page use the keys.
 ---> To make the first line the same as the second, type R and the new text.
 
-  4. Note that when you press <ESC> to exit, any unaltered text remains.
+  4. 注意当你按 <ESC> 以退出时，任何未改变的文本仍然保留。
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                               LESSON 6 SUMMARY
+                               第 6 讲 小结
 
 
-  1. Typing  o        opens a line BELOW the cursor and places the cursor on the open
-     line in insert state.
-     Typing a capital  O  opens the line ABOVE the line the cursor is on.
+  1. 按 o 以在光标下方打开一行，并将光标置于打开的这一行，进入插入状态。
+     按 O 以在光标上方打开一行，并将光标置于打开的这一行，进入插入状态。
 
-  2. Type an  a  to insert text AFTER the character the cursor is on.
-     Typing a capital  A  automatically appends text to the end of the line.
+  2. 按 a 以在光标所在字符后面插入文本。
+     按 A 以在行末附加文本。
 
-  3. Typing a capital  R  enters Replace mode until  <ESC>  is pressed to exit.
+  3. 按 R 进入替换（replace）模式，直到按 <ESC> 以退出。
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -705,6 +706,7 @@ Note: This avoids typing  i , the last character, the text to insert, <ESC>,
   Evil Tutor 在这里就结束了。它旨在给出 Emacs+Evil 编辑器的
   一个简单的总览，刚好足够让你很轻松地使用这个编辑器。
   它远远不算完整，因为 Evil 还有很多其他命令。
+  [[译注：例如，用 C-v 可以进行矩形编辑。]]
   
   此教程原本由 Michael C. Pierce 和 Robert K. Ware（Colorado
   矿物学院）写成，想法源于 Charles Smith（Colorado 州立大学），
@@ -713,7 +715,7 @@ Note: This avoids typing  i , the last character, the text to insert, <ESC>,
   为 Vim 改编：Bram Moolenaar。
   为 Emacs+Evil 改编（基于 vimtutor 1.5）：Sylvain Benner。
   
-  为简体中文翻译与改编：clsty <ph-tyhu@outlook.com>。
+  为简体中文翻译、为提升质量而改编：clsty <ph-tyhu@outlook.com>。
   当前项目地址：https://github.com/clsty/evil-tutor-sc
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

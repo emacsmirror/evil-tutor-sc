@@ -34,7 +34,7 @@
 ;; to `~/.emacs.d/.tutor-sc')
 
 ;; Features:
-;; - restore last working fil
+;; - restore last working file
 ;; - fast navigation between lessons with `C-j' and `C-k'
 
 ;;; Code:
