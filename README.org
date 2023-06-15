@@ -1,6 +1,7 @@
 * evil-tutor-sc：简体中文版的 evil-tutor
 正在施工中(Working In Progress, WIP)，未完成。
-（目前进度：前三讲/共六讲）
+
+（目前进度：前 4 讲，共 6 讲）
 
 ** 描述
 本项目简体中文版的 evil-tutor，

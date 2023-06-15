@@ -417,13 +417,13 @@
 
   ！！注：在执行下面任何一步之前，先完整阅读本节内容！！
 
-  1. 为了第 4 步，记住你现在所在的行数。
+  1. 为了第 4 步，记住你现在所在的行号（即第几行）。
 
   2. 按 G 以移至缓冲区的结尾。
   
   3. 按 gg 以移至缓冲区的开头。
 
-  4. 按 : 以及你之前所在的行数，再按 <ENTER>，
+  4. 按 : 以及你之前所在的行号，再按 <ENTER>，
      这将使你回到你在第 2 步之前所处的行。
 
   5. 如果你已经有了做这个的信心，执行第 1 至第 3 步。
@@ -442,7 +442,7 @@
   3. 为了再次搜索相同单词，按 n。
      为了反向搜索相同单词，按 N。
 
-  4. 如果你想反向搜索一个单词，使用 ? 而不是 / 。
+  4. 如果你想向上搜索一个单词，使用 ? 而不是 / 。
 
 ---> When the search reaches the end of the buffer it will continue at the start.
 
@@ -450,69 +450,69 @@
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                   Lesson 4.3: MATCHING PARENTHESES SEARCH
+                   第 4 讲第 3 节：匹配括号（parentheses）搜索
 
 
-                 ** Type  %  to find a matching ),], or } **
+                 ** 输入 % 以查找匹配的“)”、“]”或“}” **
 
-  1. 将光标移动到下面以“--->”开头的行内的任一括号如 (、[、{ 上。
+  1. 将光标移动到下面以“--->”开头的行内的任一括号如“(”、“[”、“{”上。
 
-  2. Now type the  %  character.
+  2. 现在输入 % 字符。
 
-  3. The cursor should be on the matching parenthesis or bracket.
+  3. 现在光标应当位于匹配的括号上。
 
-  4. Type  %  to move the cursor back to the first bracket (by matching).
+  4. 输入 % 来将光标移动回第一个括号上（通过匹配）。
 
 ---> This ( is a test line with ('s, ['s ] and {'s } in it. ))
 
-Note: This is very useful in debugging a program with unmatched parentheses
-      (and in elisp)!
+注：这在调试一个程序中的未匹配括号时非常有用（包括 elisp）！
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                      Lesson 4.4: A WAY TO CHANGE ERRORS
+                      第 4 讲第 4 节：一种更改错误的途径
 
 
-           ** Type  :s/old/new/g  to substitute 'new' for 'old'. **
+           ** 输入 :s/old/new/g 以将“old”替换（substitute）为“new”。 **
 
   1. 将光标移动到下面以“--->”开头的行。
 
-  2. Type  :s/thee/the <ENTER>
-     Note that this command only changes the first occurrence on the line.
+  2. 输入 :s/thee/the <ENTER>
+     注意，此命令仅更改行内第一个匹配的对象。
 
-  3. Now type  :s/thee/the/g  meaning substitute globally on the line.
-     This changes all occurrences on the line.
+  3. 现在输入 :s/thee/the/g ，其中 g 表示在行内全局（global）范围内适用。
+     此命令更改行内所有匹配的对象。
 
 ---> thee best time to see thee flowers is in thee spring.
 
-  4. To change every occurrence of a character string between two lines,
+  4. 为了更改两行之间的所有字符串，
+     输入 :#,#s/old/new/g ，其中 #,# 是这两行的行号。
 
-     type  :#,#s/old/new/g  where #,# are the numbers of the two lines.
-
-     Type  :%s/old/new/g  to change every occurrence in the whole buffer.
+     输入 :%s/old/new/g  以更改整个缓冲区内的所有匹配对象。
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                               LESSON 4 SUMMARY
+                               第 4 讲 小结
 
 
-  1. gg  moves to the beginning of the buffer.
-     G   moves to the end of the buffer.
-     :   followed by a line number then  <ENTER>  moves to that line number.
+  1. gg 移动至缓冲区的开头，
+     G  移动至缓冲区的结尾，
+     :  后加一个行号再按 <ENTER> 移动到对应行。
+     [[译注：直接输入行号后按 gg 或 G 亦可。
+     例如 32G 移动至第 32 行。]]
 
-  2. Typing  /  followed by a phrase searches FORWARD for the phrase.
-     Typing  ?  followed by a phrase searches BACKWARD for the phrase.
-     After a search type  n  to find the next occurrence in the same direction
-     or  N  to search in the opposite direction.
+  2. 输入 / 后跟一个短语，来向下搜索此短语。
+     输入 ? 后跟一个短语，来向上搜索此短语。
+     在一次搜索之后，输入 n 同方向查找下一处，
+     输入 N 反方向查找下一处。
 
-  3. Typing  %  while the cursor is on a  (,),[,],{, or }  locates its
-     matching pair.
+  3. 输入 % ，当光标在某个括号“(”“)”“[”“]”“{”“}”上时，
+     定位它匹配的另一个。
 
-  4. To substitute new for the first old on a line type  :s/old/new
-     To substitute new for all 'old's on a line type     :s/old/new/g
-     To substitute phrases between two line #'s type     :#,#s/old/new/g
-     To substitute all occurrences in the file type      :%s/old/new/g
-     To ask for confirmation each time add 'c'           :%s/old/new/gc
+  4. 为了将行内第一个 old 替换为 new，输入 :s/old/new
+     为了将行内的所有 old 替换为 new，输入 :s/old/new/g
+     为了将两行 # 之间所有 old 替换为 new，输入 :#,#s/old/new/g
+     为了将文件中内所有 old 替换为 new，输入 :%s/old/new/g
+     为了每次询问是否确认，添加“c”，即 :%s/old/new/gc
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
