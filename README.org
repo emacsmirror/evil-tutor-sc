@@ -1,15 +1,14 @@
-* evil-tutor-sc：简体中文版的 evil-tutor
-正在施工中(Working In Progress, WIP)，未完成。
+* evil-tutor-sc：简体中文的 evil-tutor
+An evil-tutor in Simplified Chinese.
+** Credits
+This project is originally translated from [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 。
 
-（目前进度：前 4 讲，共 6 讲）
+=evil-tutor-sc.el= source code modified from [[https://github.com/kenjimyzk/evil-tutor-ja][evil-tutor-ja.el]] .
 
 ** 描述
-本项目简体中文版的 evil-tutor，
-在译自[[https://github.com/syl20bnr/evil-tutor][源项目]]的同时，也加入了一些改进与修正。
+本项目是简体中文的 Evil 教程。
 
-*** 特性
-- 恢复上次的工作文件。
-- 通过 =C-j= 与 =C-k= 在课程之间快速导航。
+它并不仅是对[[https://github.com/syl20bnr/evil-tutor][evil-tutor]]的翻译，更是加入了一些改进与修正以提升质量。
 
 ** 安装
 这里给出分步说明。
@@ -17,7 +16,7 @@
 一份使用了 Evil 及 evil-tutor-sc 的完整配置也可参考 [[https://github.com/clsty/arCNiso/tree/main/airootfs/etc/skel/.emacs.d][arCNiso]] 。
 *** 依赖
 必须已经安装 [[https://www.emacswiki.org/emacs/Evil][Evil]] 和 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 才能正常使用本项目。
-
+#+begin_quote
 这两个包都在 Melpa 中，安装方法本来不必详述，但这里还是给出一段示例：
 #+begin_src elisp
   (require 'package) ; 加载 package.el
@@ -34,10 +33,10 @@
   (use-package evil)
   (use-package evil-tutor)
 #+end_src
+#+end_quote
 
 *** 本体
-**** 通过使用 quelpa
-示例如下：
+以 quelpa 为例，示例如下：
 #+begin_src elisp
 (use-package quelpa
  :ensure t
@@ -53,28 +52,21 @@
 	 :files (:defaults "tutor-sc.txt")
 	 :url "https://github.com/clsty/evil-tutor-sc.git"))
 #+end_src
-**** 通过手动克隆
-首先将此项目仓库克隆到本地，以 Linux 为例：
-#+begin_src bash
-git clone --filter=blob:none https://github.com/clsty/evil-tutor-sc ~/.emacs.d/evil-tutor-sc
-#+end_src
-
-然后向配置文件（如 =~/.emacs.d/init.el= ）中指定加载此文件（还是以 Linux 为例）：
-#+begin_src elisp
-(load "~/.emacs.d/evil-tutor-sc/evil-tutor-sc.el")
-#+end_src
 
 ** 使用
 在 Emacs 中：
 #+begin_example
 M-x evil-tutor-sc-start
 #+end_example
-注：这会在临时目录 =evil-tutor-sc-working-directory=
-（默认为 =~/.emacs.d/.tutor-sc= ）创建一个工作文件。
+这会在临时目录 =evil-tutor-sc-working-directory=
+（默认为 =~/.emacs.d/.tutor-sc= ）创建一个工作文件，
+以便下次使用时恢复上次状态。
 
 若需要恢复初始状态，可清理此目录。
 
+通过 =C-j= 与 =C-k= ，可在课程之间快速导航。
+
 ** 致谢
-本项目译自 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 。
+本项目原本译自 [[https://github.com/syl20bnr/evil-tutor][evil-tutor]] 。
 
 =evil-tutor-sc.el= 代码源自 [[https://github.com/kenjimyzk/evil-tutor-ja][evil-tutor-ja.el]]。
