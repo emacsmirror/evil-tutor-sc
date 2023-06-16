@@ -3,7 +3,7 @@
 ;; Copyright (C) 2023 clsty
 ;;
 ;; Author: clsty <ph-tyhu@outlook.com>
-;; Keywords: convenience editing evil Simplified Chinese
+;; Keywords: convenience editing evil Chinese
 ;; Created: 14 June 2023
 ;; Version: 0.1
 ;; Package-Requires: ((evil "1.0.9") (evil-tutor "0.1"))
