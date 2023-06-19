@@ -48,15 +48,15 @@
   :type 'string
   :group 'evil)
 
-;(define-derived-mode evil-tutor-mode text-mode "evil-tutor"
-;  "Major mode for evil-tutor.")
+(define-derived-mode evil-tutor-sc-mode evil-tutor-mode "evil-tutor-sc"
+  "Major mode for evil-tutor-sc.")
 
 ;;;###autoload
 (defun evil-tutor-sc-start ()
   "Start a evil-tutor-sc session."
   (interactive)
   (evil-tutor-sc-restore-or-create-working-file)
-  (evil-tutor-mode)
+  (evil-tutor-sc-mode)
   (evil-mode))
 
 ;;;###autoload
@@ -77,18 +77,18 @@ be handled by minor modes."
   (let* ((files (if (file-exists-p evil-tutor-sc-working-directory)
                     (directory-files evil-tutor-sc-working-directory t nil t)))
          (previous-file (evil-tutor--find-first-working-file files)))
-    (message "load: %s" (symbol-file 'evil-tutor-mode))
+    (message "load: %s" (symbol-file 'evil-tutor-sc-mode))
     (if previous-file
            (find-file previous-file)
       (let* ((date (format-time-string "%d%m%Y"))
              (working-file-name (format "evil-tutor-sc-%s.txt" date))
-             (tutor-file (concat (file-name-directory (symbol-file
-                                                       'evil-tutor-mode))
+             (tutor-sc-file (concat (file-name-directory (symbol-file
+                                                       'evil-tutor-sc-mode))
                                  "tutor-sc.txt")))
         (switch-to-buffer (get-buffer-create "working-file-name"))
         (set-visited-file-name (concat evil-tutor-sc-working-directory
                                        working-file-name))
-           (insert-file-contents tutor-file)
+           (insert-file-contents tutor-sc-file)
         (make-directory evil-tutor-sc-working-directory 'parents)
         (save-buffer 0)))))
 
