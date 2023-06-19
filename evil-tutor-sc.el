@@ -1,4 +1,4 @@
-;;; evil-tutor-sc.el --- Simplified Chinese Vimtutor adapted to Evil and wrapped in a major-mode
+;;; evil-tutor-sc.el --- Simplified Chinese Evil-tutor
 
 ;; Copyright (C) 2023 clsty
 ;;
@@ -48,8 +48,8 @@
   :type 'string
   :group 'evil)
 
-(define-derived-mode evil-tutor-mode text-mode "evil-tutor"
-  "Major mode for evil-tutor.")
+;(define-derived-mode evil-tutor-mode text-mode "evil-tutor"
+;  "Major mode for evil-tutor.")
 
 ;;;###autoload
 (defun evil-tutor-sc-start ()
@@ -60,7 +60,7 @@
   (evil-mode))
 
 ;;;###autoload
-(defalias 'evil-tutor-sc-resume 'evil-tutor-sc-start)
+(defalias 'evil-tutor-sc-resume #'evil-tutor-sc-start)
 
 ;; (set-keymap-parent evil-tutor-mode-map text-mode-map)
 ;; (define-key evil-tutor-mode-map (kbd "C-j") 'evil-tutor-goto-next-lesson)
