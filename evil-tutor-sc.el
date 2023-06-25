@@ -26,7 +26,7 @@
 
 ;;; Commentary:
 
-;; Vimtutor adapted for Evil.
+;; Vimtutor adapted for Evil in Simplified Chinese.
 
 ;;     M-x evil-tutor-sc-start
 
@@ -34,7 +34,7 @@
 ;; to `~/.emacs.d/.tutor-sc')
 
 ;; Features:
-;; - restore last working fil
+;; - restore last working file
 ;; - fast navigation between lessons with `C-j' and `C-k'
 
 ;;; Code:
@@ -62,10 +62,6 @@
 ;;;###autoload
 (defalias 'evil-tutor-sc-resume #'evil-tutor-sc-start)
 
-;; (set-keymap-parent evil-tutor-mode-map text-mode-map)
-;; (define-key evil-tutor-mode-map (kbd "C-j") 'evil-tutor-goto-next-lesson)
-;; (define-key evil-tutor-mode-map (kbd "C-k") 'evil-tutor-goto-previous-lesson)
-
 (defun evil-tutor-sc-restore-or-create-working-file ()
   "Create a new working buffer and save it in `evil-tutor-sc-working-directory'.
 
@@ -91,46 +87,6 @@ be handled by minor modes."
            (insert-file-contents tutor-sc-file)
         (make-directory evil-tutor-sc-working-directory 'parents)
         (save-buffer 0)))))
-
-;; (defun evil-tutor--find-first-working-file (files)
-;;   "Return the first saved working file or nil if there is no such file.
-
-;; This function expects full path for each file in FILES."
-;;   (when files
-;;     (catch 'break
-;;       (dolist (f files)
-;;         (if (string= ".txt" (file-name-extension f 'period))
-;;             (throw 'break f)))
-;;       nil)))
-
-;; (defun evil-tutor-goto-next-lesson (&optional arg)
-;;   "Move the next lesson.
-
-;; If ARG is nil then move to the next lesson,
-;; If ARG is positive then move the ARGth version after the current one,
-;; If ARG is negative then move the ARGth version before the current one."
-;;   (interactive "p")
-;;   (let ((i 0)
-;;         (regexp "^~.*~$")
-;;         (count (if arg (abs arg) 1))
-;;         (recenter-positions '(top)))
-;;     (dotimes (i count)
-;;       (if (or (not arg)
-;;               (> arg 0))
-;;           (re-search-forward regexp (buffer-end 1) 'noerror)
-;;         (re-search-backward regexp (buffer-end -1) 'noerror)))
-;;     (beginning-of-line)
-;;     (next-line)
-;;     (recenter-top-bottom)))
-
-;; (defun evil-tutor-goto-previous-lesson (&optional arg)
-;;   "Move to the previous lession.
-
-;; If ARG is nil then move to the previous lesson.
-;; If ARG is positive then move to the ARGth lesson before the current one."
-;;   (interactive "p")
-;;   ;; -1 because we have to skip the current lesson
-;;   (evil-tutor-goto-next-lesson (- (if arg (- (abs arg)) -1) 1)))
 
 (provide 'evil-tutor-sc)
 
